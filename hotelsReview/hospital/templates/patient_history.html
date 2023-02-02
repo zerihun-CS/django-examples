@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOSPITAL Managment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    {% include 'header.html' %}
+
+
+    <main>
+
+        <div class="container">
+            {% with history|first as first_object %}
+            
+
+                    <h1 scope="row">Name: {{first_object.patient.full_name}}</h1>
+                    <h3 scope="row">Age:  {{first_object.patient.age}}</h3>
+        {% endwith %}
+
+
+    
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                    
+                        <th scope="col">doctor</th>
+                        <th scope="col">date</th>
+                        <th scope="col">diagnoses</th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                        {% for single  in history %}
+                        
+                  
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                    
+                        <th scope="row">{{single.doctor.full_name}}</th>
+                        <th scope="row">{{single.date}}</th>
+                        <th scope="row">{{single.diagnoses}}</th>
+                    
+                    
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </main>
+
+
+
+
+</body>
+
+</html>
